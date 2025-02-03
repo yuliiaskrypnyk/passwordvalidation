@@ -7,10 +7,9 @@ import java.security.SecureRandom;
 public class Main {
     public static void main(String[] args) {
         int passwordLength = 12;
-        String password = generateRandomPassword(passwordLength);
-        System.out.println("Generated Random Password: " + generateRandomPassword(passwordLength));
+        System.out.println("Generated Secure Password: " + generateSecurePassword(passwordLength));
 
-        if (isValidLength(password)) {
+/*        if (isValidLength(password)) {
             System.out.println("Password has valid length");
         } else {
             System.out.println("Password is too short");
@@ -19,7 +18,7 @@ public class Main {
         if (containsDigits(password)) {
             System.out.println("Password contains digits");
         } else {
-            System.out.println("Password does not contains digits");
+            System.out.println("Password does not contain digits");
         }
 
         if (containsUpperAndLowerCase(password)) {
@@ -38,7 +37,7 @@ public class Main {
             System.out.println("Password contains special characters");
         } else {
             System.out.println("Password does not contain any special characters");
-        }
+        }*/
     }
 
     public static boolean isValidLength(String password) {
@@ -106,5 +105,19 @@ public class Main {
 
         return password;
         //return password.toString();
+    }
+
+    public static String generateSecurePassword(int length) {
+        String password;
+
+        do {
+            password = generateRandomPassword(length);
+        } while (!isValidLength(password) ||
+                !containsDigits(password) ||
+                !containsUpperAndLowerCase(password) ||
+                !isCommonPassword(password) ||
+                !containsSpecialCharacters(password));
+
+        return password;
     }
 }
