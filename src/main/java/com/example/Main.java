@@ -9,6 +9,12 @@ public class Main {
     public static void main(String[] args) {
         String password = "hallo1234";
 
+        if (isValidLength(password)) {
+            System.out.println("Password has valid length");
+        } else {
+            System.out.println("Password is too short");
+        }
+
         if (containsDigits(password)) {
             System.out.println("Password contains digits");
         } else {
@@ -22,10 +28,14 @@ public class Main {
         }
 
         if (isCommonPassword(password)) {
-            System.out.println("Password is a common password.");
+            System.out.println("Password is a common password");
         } else {
-            System.out.println("Password is not a common password.");
+            System.out.println("Password is not a common password");
         }
+    }
+
+    public static boolean isValidLength(String password) {
+        return password.length() >= 6;
     }
 
     public static boolean containsDigits(String password) {

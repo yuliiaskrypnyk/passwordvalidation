@@ -6,6 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class MainTest {
 
     @Test
+    void isValidLength() {
+        assertTrue(Main.isValidLength("hallo1234"));
+        assertFalse(Main.isValidLength("5678"));
+    }
+
+    @Test
     void containsDigits() {
         assertTrue(Main.containsDigits("hallo1234"));
         assertFalse(Main.containsDigits("hallo"));
