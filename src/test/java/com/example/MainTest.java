@@ -10,4 +10,11 @@ class MainTest {
         assertTrue(Main.containsDigits("hallo1234"));
         assertFalse(Main.containsDigits("hallo"));
     }
+
+    @Test
+    void containsUpperAndLowerCase() {
+        assertTrue(Main.containsUpperAndLowerCase("Hallo1234"));
+        assertFalse(Main.containsUpperAndLowerCase("hallo1234"));
+        assertFalse(Main.containsUpperAndLowerCase("HALLO1234"));
+    }
 }
