@@ -29,4 +29,10 @@ class MainTest {
         assertTrue(Main.isCommonPassword("hallo1234"));
         assertFalse(Main.isCommonPassword("5678"));
     }
+
+    @Test
+    void containsSpecialCharacters() {
+        assertTrue(Main.containsSpecialCharacters("hallo!"));
+        assertFalse(Main.containsSpecialCharacters("hallo"));
+    }
 }

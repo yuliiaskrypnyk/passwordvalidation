@@ -33,6 +33,12 @@ public class Main {
         } else {
             System.out.println("Password is not a common password");
         }
+
+        if (containsSpecialCharacters(password)) {
+            System.out.println("Password contains special characters");
+        } else {
+            System.out.println("Password does not contain any special characters");
+        }
     }
 
     public static boolean isValidLength(String password) {
@@ -80,6 +86,10 @@ public class Main {
         }
 
         return isCommon;
+    }
+
+    public static boolean containsSpecialCharacters(String password) {
+        return password.matches(".*[!@#$%^&*()\\-_=+<>?].*");
     }
 
     public static String generateRandomPassword(int length) {
