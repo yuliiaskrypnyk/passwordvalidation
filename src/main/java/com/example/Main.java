@@ -1,13 +1,14 @@
 package com.example;
 
-import java.util.Arrays;
+import java.security.SecureRandom;
+//import java.util.Arrays;
 //import java.util.List;
-
-import static java.lang.Character.*;
 
 public class Main {
     public static void main(String[] args) {
-        String password = "hallo1234";
+        int passwordLength = 12;
+        String password = generateRandomPassword(passwordLength);
+        System.out.println("Generated Random Password: " + generateRandomPassword(passwordLength));
 
         if (isValidLength(password)) {
             System.out.println("Password has valid length");
@@ -35,7 +36,7 @@ public class Main {
     }
 
     public static boolean isValidLength(String password) {
-        return password.length() >= 6;
+        return password.length() >= 8;
     }
 
     public static boolean containsDigits(String password) {
@@ -47,11 +48,11 @@ public class Main {
         boolean hasLowerCase = false;
 
         for (int i = 0; i < password.length(); i++) {
-            if (isUpperCase(password.charAt(i))) {
+            if (Character.isUpperCase(password.charAt(i))) {
                 hasUpperCase = true;
             }
 
-            if (isLowerCase(password.charAt(i))) {
+            if (Character.isLowerCase(password.charAt(i))) {
                 hasLowerCase = true;
             }
 
@@ -65,18 +66,35 @@ public class Main {
 
     public static boolean isCommonPassword(String password) {
         String[] commonPasswords = {"hallo1234", "qwerty", "0000"};
-        return Arrays.asList(commonPasswords).contains(password);
+//        return Arrays.asList(commonPasswords).contains(password);
 
 /*        List<String> commonPasswords = Arrays.asList("Hallo1234", "qwerty", "0000");
         return commonPasswords.contains(password);*/
 
-/*        boolean isCommon = false;
+        boolean isCommon = false;
         for (String s : commonPasswords) {
             if (s.equals(password)) {
                 isCommon = true;
                 break;
             }
         }
-        return isCommon;*/
+
+        return isCommon;
+    }
+
+    public static String generateRandomPassword(int length) {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_+=<>?";
+        SecureRandom random = new SecureRandom();
+        String password = "";
+        //StringBuilder password = new StringBuilder(length);
+
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(characters.length());
+            password += characters.charAt(index);
+            //password.append(characters.charAt(index));
+        }
+
+        return password;
+        //return password.toString();
     }
 }
