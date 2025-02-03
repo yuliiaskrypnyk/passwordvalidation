@@ -17,4 +17,10 @@ class MainTest {
         assertFalse(Main.containsUpperAndLowerCase("hallo1234"));
         assertFalse(Main.containsUpperAndLowerCase("HALLO1234"));
     }
+
+    @Test
+    void isCommonPassword() {
+        assertTrue(Main.isCommonPassword("hallo1234"));
+        assertFalse(Main.isCommonPassword("5678"));
+    }
 }

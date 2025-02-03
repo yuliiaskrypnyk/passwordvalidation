@@ -1,5 +1,8 @@
 package com.example;
 
+import java.util.Arrays;
+//import java.util.List;
+
 import static java.lang.Character.*;
 
 public class Main {
@@ -16,6 +19,12 @@ public class Main {
             System.out.println("Password contains both uppercase and lowercase letters");
         } else {
             System.out.println("Password does not contain both uppercase and lowercase letters");
+        }
+
+        if (isCommonPassword(password)) {
+            System.out.println("Password is a common password.");
+        } else {
+            System.out.println("Password is not a common password.");
         }
     }
 
@@ -42,5 +51,22 @@ public class Main {
         }
 
         return false;
+    }
+
+    public static boolean isCommonPassword(String password) {
+        String[] commonPasswords = {"hallo1234", "qwerty", "0000"};
+        return Arrays.asList(commonPasswords).contains(password);
+
+/*        List<String> commonPasswords = Arrays.asList("Hallo1234", "qwerty", "0000");
+        return commonPasswords.contains(password);*/
+
+/*        boolean isCommon = false;
+        for (String s : commonPasswords) {
+            if (s.equals(password)) {
+                isCommon = true;
+                break;
+            }
+        }
+        return isCommon;*/
     }
 }
